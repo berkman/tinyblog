@@ -8,7 +8,7 @@ A tiny blog written in Python leveraging Django/Bootstrap/Postgres and built to 
 
 
 cli examples:
-<code>
+<pre><code>
     from main.models import Post, Comment
     from django.utils import timezone
     from django.contrib.auth.models import User
@@ -17,4 +17,4 @@ cli examples:
     p = Post.objects.get(pk=1)
 
     p.comment_set.create(comment='you suck!', user=u, comment_pub=timezone.now())
-</code>
+</code></pre>

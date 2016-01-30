@@ -1,9 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class User(models.Model):
-    email = models.CharField(max_length=50)
-    password = models.CharField(max_length=30)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    access_level = models.CharField(max_length=10)
-    last_login = models.DateTimeField('last_login', auto_now_add=True)
+class Post(models.Model):
+    subject = models.CharField(max_length=200)
+    body = models.CharField(max_length=2000)
+    user = models.ForeignKey(User)
+    post_timestamp = models.DateTimeField('date published')

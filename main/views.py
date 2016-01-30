@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
-#from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
+from django.conf import settings
 
-from .models import User
+from .models import Post
 from .forms import LoginForm
 
 
 def index_view(request):
     if request.user.is_authenticated():
         return render(request, 'index.html', {'username': request.user.username,
-         'is_admin': request.user.is_staff, 'motd': "herrrrp, derp"})
+         'is_admin': request.user.is_staff, 'motd': "herrrrp, derp", 'app_env': getattr(settings, "APP_ENV", None)})
     else:
         return render(request, 'index.html')
 

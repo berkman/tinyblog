@@ -18,3 +18,13 @@ cli examples:
 
     p.comment_set.create(comment='you suck!', user=u, comment_pub=timezone.now())
 </code></pre>
+
+Database:
+edit the DATABASE_URL variable in .env to point to your local Postgres DB
+<pre><code>
+python manage.py makemigrations
+python manage.py migrate
+</code></pre>
+
+Start the local webserver:
+heroku local web

@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
 
 from .models import Post
-from .forms import LoginForm
 
 
 def index_view(request):
@@ -53,22 +52,3 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
-
-
-def test_view(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = LoginForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            redirect('/')
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = LoginForm()
-
-    return render(request, 'testing.html', {'form': form})

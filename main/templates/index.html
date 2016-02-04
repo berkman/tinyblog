@@ -16,10 +16,25 @@
     {{ motd }}
   </div>
   {% endif %}
-  <div class="row text-center">
-    [picture] subject<br />
-    timestamp by username
-    body...
-  </div> 
+  <div class="row">
+    <div>
+      <table class="table-center">
+      {% for item in post_results %}
+        <tr>
+            <td class="h3"><img src="{{ item.user.user_attr.photo_url }}" width="40px" /> {{ item.subject }}</td>
+        </tr>
+        <tr>
+          <td class="h5">Posted by <a href="mailto:{{ item.user.email }}">{{ item.user.first_name }}</a> at {{ item.post_date }}</td>
+        </tr>
+        <tr>
+            <td class="col-md-6">{{ item.body }}</td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td></tr>
+      {% endfor %}
+      </table>
+    </div>
+  </div>
 </div>
 {% endblock %}

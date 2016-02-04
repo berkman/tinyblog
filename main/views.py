@@ -3,14 +3,18 @@ from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
 
 from .models import Post
+from django.contrib.auth.models import User
 
 
 def index_view(request):
+    post_results = Post.objects.all().order_by('-post_date')
+
     if request.user.is_authenticated():
         return render(request, 'index.html', {'username': request.user.username,
-         'is_admin': request.user.is_staff, 'motd': "herrrrp, derp", 'app_env': getattr(settings, "APP_ENV", None)})
+         'is_admin': request.user.is_staff, 'motd': "Welcome " + request.user.username + "!",
+         'post_results': post_results})
     else:
-        return render(request, 'index.html')
+        return render(request, 'index.html', {'post_results': post_results})
 
 
 def post_view(request):
@@ -22,9 +26,9 @@ def post_view(request):
 
 def account_view(request):
     if request.user.is_authenticated():
-        return render(request, 'account.html', {'username': request.user.username,
-            'email': request.user.email, 'first_name': request.user.first_name, 'last_name': request.user.last_name,
-            'last_login': request.user.last_login, 'is_admin': request.user.is_staff})
+        user = User.objects.get(email=request.user.email)
+
+        return render(request, 'account.html', {'user': user})
     else:
         return redirect('login')
 

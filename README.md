@@ -4,7 +4,7 @@ A tiny blog written in Python leveraging Django/Bootstrap/Postgres and built to 
 
 
 cli examples:
-<pre><code>from main.models import Post, Comment
+<pre><code>from tinyblog.models import Post, Comment
 from django.utils import timezone
 from django.contrib.auth.models import User
 

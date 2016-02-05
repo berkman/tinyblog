@@ -1,17 +1,20 @@
 from django.shortcuts import render, redirect, get_object_or_404
-#from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
+from django.conf import settings
 
-from .models import User
-from .forms import LoginForm
+from .models import Post
+from django.contrib.auth.models import User
 
 
 def index_view(request):
+    post_results = Post.objects.all().order_by('-post_date')
+
     if request.user.is_authenticated():
         return render(request, 'index.html', {'username': request.user.username,
-         'is_admin': request.user.is_staff, 'motd': "herrrrp, derp"})
+         'is_admin': request.user.is_staff, 'motd': "Welcome " + request.user.username + "!",
+         'post_results': post_results})
     else:
-        return render(request, 'index.html')
+        return render(request, 'index.html', {'post_results': post_results})
 
 
 def post_view(request):
@@ -23,9 +26,9 @@ def post_view(request):
 
 def account_view(request):
     if request.user.is_authenticated():
-        return render(request, 'account.html', {'username': request.user.username,
-            'email': request.user.email, 'first_name': request.user.first_name, 'last_name': request.user.last_name,
-            'last_login': request.user.last_login, 'is_admin': request.user.is_staff})
+        user = User.objects.get(email=request.user.email)
+
+        return render(request, 'account.html', {'user': user})
     else:
         return redirect('login')
 
@@ -53,22 +56,3 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
-
-
-def test_view(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = LoginForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            redirect('/')
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = LoginForm()
-
-    return render(request, 'testing.html', {'form': form})

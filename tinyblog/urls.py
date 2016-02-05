@@ -3,15 +3,14 @@ from django.conf.urls import include, url
 from django.contrib import admin
 admin.autodiscover()
 
-import main.views
+import tinyblog.views
 
 
 urlpatterns = [
-    url(r'^$', main.views.index_view, name='index'),
-    url(r'^post', main.views.post_view, name='post'),
-    url(r'^account', main.views.account_view, name='account'),
-    url(r'^login', main.views.login_view, name='login'),
-    url(r'^logout', main.views.logout_view, name='logout'),
-    url(r'^testing', main.views.test_view, name='test'),
+    url(r'^$', tinyblog.views.index_view, name='index'),
+    url(r'^post/', tinyblog.views.post_view, name='post'),
+    url(r'^account/', tinyblog.views.account_view, name='account'),
+    url(r'^login/', tinyblog.views.login_view, name='login'),
+    url(r'^logout/', tinyblog.views.logout_view, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
 ]

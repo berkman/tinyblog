@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-
 {% block content %}
-
 <div class="jumbotron jumbotron-small text-center">
     <h1>Account</h1>
     <p>Tweak some settings</p>
@@ -15,12 +13,13 @@
   <hr>
   {% endif %}
   <div class="row">
-    <p>{{ username }}</p>
-    <p>{{ email }}</p>
-    <p>{{ first_name }}</p>
-    <p>{{ last_name }}</p>
-    <p>{{ last_login }}</p>
-    <p>{{ is_admin }}</p>
-  </div> <!-- row -->
+    <p>{{ user.email }}</p>
+    <p>{{ user.first_name }}</p>
+    <p>{{ user.last_name }}</p>
+    <p>{{ user.last_login }}</p>
+    <p>{{ user.is_staff }}</p>
+    <p>{{ user.user_attr.mobile_number }}</p>
+    <p>{{ user.user_attr.photo_url }}</p>
+  </div>
 </div>
 {% endblock %}

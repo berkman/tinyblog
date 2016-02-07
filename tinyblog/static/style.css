@@ -1,14 +1,6 @@
 body {
   font-family: 'Verdana', sans-serif;
 }
-.jumbotron {
-    background: #000000;
-    color: #ffffff;
-}
-.jumbotron .btn-primary {
-    background: #cc0000;
-    border-color: #cc0000
-}
 .navbar-default {
   background-color: #000000;
   border-color: #3a3a3a;
@@ -78,29 +70,25 @@ body {
     background-color: #3a3a3a;
   }
 }
+.jumbotron {
+    background: #000000;
+    color: #ffffff;
+}
+.jumbotron .btn-primary {
+    background: #cc0000;
+    border-color: #cc0000;
+}
 .jumbotron .btn-primary:hover {
-    background: #acbebe
+    background: #3a3a3a;
+    border-color: #3a3a3a;
 }
 .jumbotron p {
-    color: #acbebe;
+    color: #3a3a3a;
     max-width: 75%;
-    margin: 1em auto 2em
+    margin: 1em auto 2em;
 }
 .navbar+.jumbotron {
-    margin-top: -20px
-}
-.jumbotron .lang-logo {
-    display: block;
-    background: #b01302;
-    border-radius: 50%;
-    overflow: hidden;
-    width: 100px;
-    height: 100px;
-    margin: auto;
-    border: 2px solid white
-}
-.jumbotron .lang-logo img {
-    max-width: 100%
+    margin-top: -20px;
 }
 .table-center {
   margin: 0 auto !important;

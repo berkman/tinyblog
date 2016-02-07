@@ -1,0 +1,6 @@
+<svg width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect x="10" y="10" rx="20" ry="20" width="80" height="80" style="fill: none; stroke-width: 10px; stroke: #ffffff" />
+  <text x="22" y="70" font-family="Verdana" font-weight="bold" font-size="50" style="fill: #ffffff">
+    tb
+  </text>
+</svg>

@@ -25,9 +25,9 @@
           {% if is_admin == True %}
           <li><a href="#"> Admin </a></li>
           {% endif %}
-          <li><a href="{% url 'account' %}"><span class="glyphicon glyphicon-wrench"></span> Account </a></li>
-          <li><a href="{% url 'post' %}"><span class="glyphicon glyphicon-font"></span> Post </a></li>
-          <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-ban-circle"></span> Logout </a></li>
+          <li><a href="{% url 'account' %}"> Account </a></li>
+          <li><a href="{% url 'post' %}"> Post </a></li>
+          <li><a href="{% url 'logout' %}"> Logout </a></li>
         </ul>
         {% else %}
         <a href="{% url 'login' %}"> Login</a>

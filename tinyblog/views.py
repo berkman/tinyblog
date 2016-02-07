@@ -11,8 +11,7 @@ def index_view(request):
 
     if request.user.is_authenticated():
         return render(request, 'index.html', {'username': request.user.username,
-         'is_admin': request.user.is_staff, 'motd': "Welcome " + request.user.username + "!",
-         'post_results': post_results})
+         'is_admin': request.user.is_staff, 'post_results': post_results})
     else:
         return render(request, 'index.html', {'post_results': post_results})
 

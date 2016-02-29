@@ -11,23 +11,23 @@ def index_view(request):
 
     if request.user.is_authenticated():
         return render(request, 'index.html', {'username': request.user.username,
-         'is_admin': request.user.is_staff, 'post_results': post_results})
+            'is_admin': request.user.is_staff, 'post_results': post_results})
     else:
         return render(request, 'index.html', {'post_results': post_results})
 
 
 def post_view(request):
     if request.user.is_authenticated():
-        return render(request, 'post.html', {'username': request.user.username})
+        return render(request, 'post.html', {'username': request.user.username,
+            'is_admin': request.user.is_staff})
     else:
         return redirect('login')
 
 
 def account_view(request):
     if request.user.is_authenticated():
-        user = User.objects.get(email=request.user.email)
-
-        return render(request, 'account.html', {'user': user})
+        return render(request, 'account.html', {'username': request.user.username,
+            'is_admin': request.user.is_staff})
     else:
         return redirect('login')
 
